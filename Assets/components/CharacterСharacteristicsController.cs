@@ -9,9 +9,12 @@ namespace components
         [FormerlySerializedAs("Health data")] [SerializeField] 
         private CharacterHealthData healthData;
 
+        [SerializeField] private int _health;
+        [SerializeField] private int _healthRegeneration;
+
         private void Start()
         {
-            healthData = new CharacterHealthData(20, 4);
+            healthData = new CharacterHealthData(_health, _healthRegeneration);
         }
 
         private void Update()

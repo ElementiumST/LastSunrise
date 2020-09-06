@@ -10,7 +10,7 @@
         {
             _maxHealthPoints = maxHealthPoints;
             _regenerationSpeed = regenerationSpeed;
-            _healthPoints = 1;
+            _healthPoints = maxHealthPoints;
         }
 
         public void AddHealthRegeneration(float value)
@@ -45,6 +45,19 @@
                 _healthPoints = _maxHealthPoints;
             else
                 _healthPoints += value;
+        }
+
+        public void Damage(float value)
+        {
+            if (_healthPoints - value < 0)
+            {
+                //TODO Event
+                _healthPoints = 0;
+            }
+            else
+            {
+                _healthPoints -= value;
+            }
         }
 
         public void Regenerate(float deltaTime)
